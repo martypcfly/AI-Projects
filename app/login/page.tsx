@@ -8,7 +8,6 @@ import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { createClient } from "@/lib/supabase/client"
-import { Heart, Mail, Lock } from "lucide-react"
 
 export default function LoginPage() {
   const [email, setEmail] = useState("")
@@ -57,29 +56,27 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen bg-[var(--color-background)] flex items-center justify-center p-4">
+    <div className="min-h-screen flex items-center justify-center p-4" style={{ backgroundColor: "#fef7f0" }}>
       <Card className="w-full max-w-md p-8 space-y-6">
         <div className="text-center space-y-4">
           <div className="flex justify-center">
-            <div className="bg-[var(--color-primary)] p-3 rounded-full">
-              <Heart className="h-8 w-8 text-white" />
+            <div className="bg-teal-700 p-3 rounded-full">
+              <span className="text-white text-2xl">💝</span>
             </div>
           </div>
           <div>
-            <h1 className="text-3xl font-bold text-[var(--color-text)]">Memory Journal</h1>
-            <p className="text-[var(--color-text-muted)] text-lg mt-2">
-              {isSignUp ? "Create your account" : "Welcome back"}
-            </p>
+            <h1 className="text-3xl font-bold text-gray-900">Memory Journal</h1>
+            <p className="text-gray-700 text-lg mt-2">{isSignUp ? "Create your account" : "Welcome back"}</p>
           </div>
         </div>
 
         <form onSubmit={handleAuth} className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email" className="text-[var(--color-text)] font-semibold">
+            <Label htmlFor="email" className="text-gray-900 font-semibold">
               Email Address
             </Label>
             <div className="relative">
-              <Mail className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--color-text-muted)]" />
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">@</span>
               <Input
                 id="email"
                 type="email"
@@ -93,11 +90,11 @@ export default function LoginPage() {
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="password" className="text-[var(--color-text)] font-semibold">
+            <Label htmlFor="password" className="text-gray-900 font-semibold">
               Password
             </Label>
             <div className="relative">
-              <Lock className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-[var(--color-text-muted)]" />
+              <span className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-600">🔒</span>
               <Input
                 id="password"
                 type="password"
@@ -126,7 +123,7 @@ export default function LoginPage() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white text-lg py-3 font-semibold"
+            className="w-full bg-teal-700 hover:bg-teal-800 text-white text-lg py-3 font-semibold"
           >
             {isLoading ? "Loading..." : isSignUp ? "Create Account" : "Sign In"}
           </Button>
@@ -139,7 +136,7 @@ export default function LoginPage() {
               setIsSignUp(!isSignUp)
               setMessage("")
             }}
-            className="text-[var(--color-primary)] hover:text-[var(--color-primary-hover)] font-semibold"
+            className="text-teal-700 hover:text-teal-800 font-semibold"
           >
             {isSignUp ? "Already have an account? Sign in" : "Don't have an account? Sign up"}
           </button>

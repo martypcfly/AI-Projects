@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { Sparkles } from "lucide-react"
 import Link from "next/link"
 
 export default function LandingPage() {
@@ -13,12 +12,12 @@ export default function LandingPage() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ backgroundColor: "#fef7f0" }}>
       {/* Header */}
       <header className="flex justify-between items-center px-6 py-4 max-w-6xl mx-auto">
         <div className="flex items-center space-x-2">
           <div className="star-icon">
-            <Sparkles className="h-6 w-6 text-white" />
+            <span className="text-white text-xl">✨</span>
           </div>
           <span className="text-xl font-semibold text-primary">Memory journal</span>
         </div>
@@ -31,9 +30,9 @@ export default function LandingPage() {
 
       {/* Hero Section */}
       <section className="hero-section">
-        <div className="max-w-4xl mx-auto text-center px-6 text-white">
-          <h1 className="hero-title mb-6">Every day, a story remembered</h1>
-          <p className="hero-subtitle mb-8 max-w-2xl mx-auto">
+        <div className="max-w-4xl mx-auto text-center px-6 py-20">
+          <h1 className="text-5xl md:text-6xl font-bold mb-6 text-gray-900">Every day, a story remembered</h1>
+          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto leading-relaxed">
             {
               "This is your gentle space to capture memories, thoughts, and daily moments—no matter how big or small. Write for yourself, share with loved ones, and revisit the journey together. Here, you're always supported, and every entry is a celebration of your life.\n\n"
             }
@@ -72,7 +71,7 @@ export default function LandingPage() {
       </section>
 
       {/* Features Section */}
-      <section id="features" className="bg-primary text-primary-foreground py-20">
+      <section id="features" className="bg-teal-800 text-white py-20">
         <div className="max-w-6xl mx-auto px-6">
           <div className="text-center mb-16">
             <p className="text-sm uppercase tracking-wider opacity-80 mb-4">FEATURE HIGHLIGHTS</p>
@@ -152,11 +151,11 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-background py-12 border-t">
+      <footer className="py-12 border-t" style={{ backgroundColor: "#fef7f0" }}>
         <div className="max-w-6xl mx-auto px-6 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="star-icon">
-              <Sparkles className="h-6 w-6 text-white" />
+              <span className="text-white text-xl">✨</span>
             </div>
             <span className="text-xl font-semibold text-primary">Memory journal</span>
           </div>

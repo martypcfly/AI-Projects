@@ -9,31 +9,34 @@
     "start": "next start"
   },
   "dependencies": {
-    "@remix-run/react": "latest",
+    "@radix-ui/react-label": "^2.0.2",
+    "@radix-ui/react-slot": "^1.0.2",
     "@supabase/ssr": "latest",
     "@supabase/supabase-js": "latest",
-    "@sveltejs/kit": "latest",
-    "@vercel/analytics": "latest",
+    "@vercel/analytics": "^1.1.1",
     "@vercel/blob": "latest",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "geist": "latest",
+    "cmdk": "^0.2.0",
+    "geist": "^1.3.0",
+    "input-otp": "^1.2.4",
     "lucide-react": "^0.454.0",
     "next": "14.2.16",
     "react": "^18",
     "react-day-picker": "^9.1.3",
     "react-dom": "^18",
-    "svelte": "latest",
+    "recharts": "^2.8.0",
     "tailwind-merge": "^2.5.5",
     "tailwindcss-animate": "^1.0.7",
-    "vue": "latest",
-    "vue-router": "latest"
+    "vaul": "^0.9.0"
   },
   "devDependencies": {
+    "@tailwindcss/postcss": "^4.1.9",
     "@types/node": "^22",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "postcss": "^8.5",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
 }

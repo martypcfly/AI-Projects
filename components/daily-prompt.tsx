@@ -64,7 +64,7 @@ const fallbackPrompts: Prompt[] = [
     text: "Describe your childhood home. What room was your favorite?",
     category: "childhood",
   },
-  { id: "fallback-12", text: "What was the most meaningful gift you ever received or gave?", category: "gifts" },
+  { id: "fallback-12", text: "What family recipe or meal brings back special memories?", category: "food" },
   {
     id: "fallback-13",
     text: "Tell me about a teacher, mentor, or person who influenced your life.",
@@ -84,46 +84,35 @@ export default function DailyPrompt({ onPromptSelect }: DailyPromptProps) {
   const getRandomFallbackPrompt = () => {
     const randomIndex = Math.floor(Math.random() * fallbackPrompts.length)
     const selectedPrompt = fallbackPrompts[randomIndex]
-    console.log("[v0] Selected fallback prompt:", selectedPrompt)
     return selectedPrompt
   }
 
   const fetchRandomPrompt = async () => {
-    console.log("[v0] Fetching random prompt, useFallback:", useFallback)
     try {
       if (!useFallback) {
         const { data, error } = await supabase.rpc("get_random_prompt")
-        console.log("[v0] Database response - data:", data, "error:", error)
 
         if (error) {
-          console.log("[v0] Database function not available, using fallback prompts")
           setUseFallback(true)
           const fallbackPrompt = getRandomFallbackPrompt()
           setCurrentPrompt(fallbackPrompt)
         } else if (data && data.length > 0) {
-          console.log("[v0] Using database prompt:", data[0])
           setCurrentPrompt(data[0])
         } else {
-          // No prompts in database, use fallback
-          console.log("[v0] No prompts in database, using fallback")
           const fallbackPrompt = getRandomFallbackPrompt()
           setCurrentPrompt(fallbackPrompt)
         }
       } else {
-        // Use fallback prompts
-        console.log("[v0] Using fallback prompts directly")
         const fallbackPrompt = getRandomFallbackPrompt()
         setCurrentPrompt(fallbackPrompt)
       }
     } catch (error) {
-      console.log("[v0] Error connecting to database, using fallback prompts:", error)
       setUseFallback(true)
       const fallbackPrompt = getRandomFallbackPrompt()
       setCurrentPrompt(fallbackPrompt)
     } finally {
       setIsLoading(false)
       setIsRefreshing(false)
-      console.log("[v0] Finished fetching prompt, isLoading set to false")
     }
   }
 
@@ -139,14 +128,10 @@ export default function DailyPrompt({ onPromptSelect }: DailyPromptProps) {
   }
 
   useEffect(() => {
-    console.log("[v0] Component mounted, fetching initial prompt")
     fetchRandomPrompt()
   }, [])
 
-  console.log("[v0] Render - isLoading:", isLoading, "currentPrompt:", currentPrompt)
-
   if (isLoading) {
-    console.log("[v0] Showing loading state")
     return (
       <Card className="card">
         <div className="text-center">
@@ -160,7 +145,6 @@ export default function DailyPrompt({ onPromptSelect }: DailyPromptProps) {
   }
 
   const displayPrompt = currentPrompt || getRandomFallbackPrompt()
-  console.log("[v0] Display prompt:", displayPrompt)
 
   return (
     <Card className="card">
@@ -177,7 +161,10 @@ export default function DailyPrompt({ onPromptSelect }: DailyPromptProps) {
         </div>
 
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button onClick={handleStartJournal} className="btn-primary flex items-center gap-2">
+          <Button
+            onClick={handleStartJournal}
+            className="hover:bg-accent flex items-center gap-2 font-semibold text-lg px-6 py-3 rounded-lg transition-all duration-200 opacity-100 bg-emerald-700 text-white"
+          >
             <MessageCircle className="h-5 w-5" />
             Start Writing
           </Button>
@@ -186,7 +173,7 @@ export default function DailyPrompt({ onPromptSelect }: DailyPromptProps) {
             onClick={handleRefresh}
             disabled={isRefreshing}
             variant="outline"
-            className="flex items-center gap-2 border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white font-semibold text-lg px-6 py-3 rounded-lg bg-transparent"
+            className="flex items-center gap-2 border-2 border-[var(--color-primary)] text-[var(--color-primary)] hover:bg-[var(--color-primary)] hover:text-white font-semibold text-lg px-6 py-3 rounded-lg bg-green-100"
           >
             <RefreshCw className={`h-5 w-5 ${isRefreshing ? "animate-spin" : ""}`} />
             {isRefreshing ? "Getting New Prompt..." : "Try Another Prompt"}

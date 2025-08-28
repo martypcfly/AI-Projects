@@ -128,7 +128,7 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen" style={{ backgroundColor: "#fef7f0" }}>
       {currentView === "home" && !showSuccessMessage && (
         <div className="hero-section">
           <div className="max-w-4xl mx-auto">
@@ -136,10 +136,12 @@ export default function Dashboard() {
               <div className="star-icon">
                 <Sparkles className="h-6 w-6 text-white" />
               </div>
-              <h1 className="text-2xl font-semibold text-primary">Memory journal</h1>
+              <h1 className="text-2xl font-semibold text-teal-700">Memory journal</h1>
             </div>
-            <h2 className="hero-title">Every day, a story remembered</h2>
-            <p className="hero-subtitle">
+            <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-gray-900">
+              Every day, a story remembered
+            </h2>
+            <p className="text-xl text-gray-700 text-center max-w-3xl mx-auto leading-relaxed">
               This is your gentle space to capture memories, thoughts, and daily moments—no matter how big or small.
               Write for yourself, share with loved ones, and revisit the journey together. Here, you're always
               supported, and every entry is a celebration of your life.
@@ -150,14 +152,14 @@ export default function Dashboard() {
 
       <div className="max-w-4xl mx-auto px-4 py-8">
         <header className="flex justify-between items-center mb-8">
-          <div className="flex items-center space-x-2 text-muted-foreground">
+          <div className="flex items-center space-x-2 text-gray-600">
             <User className="h-5 w-5" />
             <span className="text-sm">{user.email}</span>
           </div>
           <Button
             onClick={handleSignOut}
             variant="ghost"
-            className="text-muted-foreground hover:text-foreground hover:bg-accent"
+            className="text-gray-600 hover:text-gray-900 hover:bg-white/50"
           >
             <LogOut className="h-4 w-4 mr-2" />
             Sign Out
@@ -188,7 +190,7 @@ export default function Dashboard() {
                   <div className="grid md:grid-cols-2 gap-6">
                     <Button
                       onClick={() => setCurrentView("writing")}
-                      className="bg-primary hover:bg-accent text-primary-foreground flex items-center gap-3 text-lg px-8 py-6 h-auto rounded-xl font-semibold transition-all duration-200 hover:scale-105"
+                      className="hover:bg-accent flex items-center gap-3 font-semibold text-lg px-8 py-6 h-auto rounded-xl transition-all duration-200 hover:scale-105 bg-emerald-700 text-white"
                     >
                       <PlusCircle className="h-6 w-6" />
                       <div className="text-left">
@@ -200,7 +202,7 @@ export default function Dashboard() {
                     <Button
                       onClick={handleViewEntries}
                       variant="outline"
-                      className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-lg px-8 py-6 h-auto bg-transparent flex items-center gap-3 rounded-xl transition-all duration-200 hover:scale-105"
+                      className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-lg px-8 py-6 h-auto flex items-center gap-3 rounded-xl transition-all duration-200 hover:scale-105 bg-green-100"
                     >
                       <BookOpen className="h-6 w-6" />
                       <div className="text-left">

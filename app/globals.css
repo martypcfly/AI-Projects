@@ -2,44 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "tailwindcss";
-@import "tw-animate-css";
-
 :root {
-  /* Updated to warm peachy/teal color scheme inspired by reference design */
-  --background: #f5e6d3; /* Warm peachy background */
-  --foreground: #2d4a3e; /* Dark teal text */
+  /* Clean CSS variables for warm peachy/teal color scheme */
+  --background: #f5e6d3;
+  --foreground: #2d4a3e;
   --card: #ffffff;
   --card-foreground: #2d4a3e;
   --popover: #ffffff;
   --popover-foreground: #2d4a3e;
-  --primary: #2d4a3e; /* Dark teal primary */
+  --primary: #2d4a3e;
   --primary-foreground: #ffffff;
-  --secondary: #e8d5c4; /* Lighter peach */
+  --secondary: #e8d5c4;
   --secondary-foreground: #2d4a3e;
   --muted: #f0e1d0;
-  --muted-foreground: #6b7c72; /* Muted teal-gray */
-  --accent: #4a6b5a; /* Medium teal */
+  --muted-foreground: #6b7c72;
+  --accent: #4a6b5a;
   --accent-foreground: #ffffff;
   --destructive: #dc2626;
   --destructive-foreground: #ffffff;
   --border: #d4c4b0;
   --input: #ffffff;
   --ring: #4a6b5a;
-  --chart-1: #4a6b5a;
-  --chart-2: #6b8a7a;
-  --chart-3: #8ba99a;
-  --chart-4: #abc8ba;
-  --chart-5: #cbe7da;
   --radius: 0.75rem;
-  --sidebar: #2d4a3e;
-  --sidebar-foreground: #ffffff;
-  --sidebar-primary: #4a6b5a;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #3a5a4a;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #4a6b5a;
-  --sidebar-ring: #6b8a7a;
 }
 
 .dark {
@@ -62,39 +46,19 @@
   --border: #4a6b5a;
   --input: #3a5a4a;
   --ring: #6b8a7a;
-  --chart-1: #8ba99a;
-  --chart-2: #abc8ba;
-  --chart-3: #cbe7da;
-  --chart-4: #6b8a7a;
-  --chart-5: #4a6b5a;
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @theme inline {
-  /* Updated font configuration to use Inter instead of Geist */
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  /* Font configuration using Inter */
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: ui-serif, Georgia, Cambria, Times, serif;
+  --font-mono: ui-monospace, SFMono-Regular, Monaco, Consolas, monospace;
 
-  /* Updated semantic color mappings to match new warm design */
+  /* Color mappings */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
   --color-card-foreground: var(--card-foreground);
-  --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
   --color-primary: var(--primary);
   --color-primary-foreground: var(--primary-foreground);
   --color-secondary: var(--secondary);
@@ -103,35 +67,14 @@
   --color-muted-foreground: var(--muted-foreground);
   --color-accent: var(--accent);
   --color-accent-foreground: var(--accent-foreground);
-  --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
-  --color-sidebar: var(--sidebar);
-  --color-sidebar-foreground: var(--sidebar-foreground);
-  --color-sidebar-primary: var(--sidebar-primary);
-  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
-  --color-sidebar-accent: var(--sidebar-accent);
-  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
-  --color-sidebar-border: var(--sidebar-border);
-  --color-sidebar-ring: var(--sidebar-ring);
 }
 
-/* Base styles for accessibility */
 @layer base {
   * {
     box-sizing: border-box;
-    @apply border-border outline-ring/50;
   }
 
   body {
@@ -139,18 +82,11 @@
     background-color: var(--color-background);
     color: var(--color-foreground);
     line-height: 1.6;
-    font-size: 18px; /* Larger base font for accessibility */
-    @apply bg-background text-foreground;
+    font-size: 18px;
   }
 }
 
-/* Enhanced focus styles with new color scheme */
-*:focus-visible {
-  outline: 3px solid var(--color-primary);
-  outline-offset: 2px;
-}
-
-/* Updated button styles with new teal primary color */
+/* Button and component styles */
 .btn-primary {
   background-color: var(--color-primary);
   color: var(--color-primary-foreground);
@@ -168,77 +104,7 @@
   transform: translateY(-1px);
 }
 
-/* Updated card styles with warm background */
-.card {
-  background-color: var(--color-card);
-  border: 2px solid var(--color-border);
-  border-radius: 1rem;
-  padding: 2rem;
-  box-shadow: 0 4px 6px -1px rgba(45, 74, 62, 0.1);
-}
-
-/* Updated audio controls with teal accent */
-.audio-controls {
-  background-color: var(--color-accent);
-  color: var(--color-accent-foreground);
-  border-radius: 1rem;
-  padding: 1rem;
-}
-
-/* Added hero section styling for main page */
-.hero-section {
-  background: linear-gradient(135deg, var(--color-background) 0%, var(--color-secondary) 100%);
-  min-height: 60vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  padding: 4rem 2rem;
-}
-
-.hero-title {
-  font-size: 3.5rem;
-  font-weight: 700;
-  color: var(--color-primary);
-  line-height: 1.2;
-  margin-bottom: 1.5rem;
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--color-muted-foreground);
-  max-width: 800px;
-  margin: 0 auto;
-  line-height: 1.6;
-}
-
-/* Added star icon styling */
-.star-icon {
-  width: 2rem;
-  height: 2rem;
-  background-color: var(--color-primary);
-  border-radius: 0.5rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  margin-right: 0.75rem;
-}
-
-/* Added compact styling for feedback card */
-.feedback-card {
-  background-color: var(--color-card);
-  border: 1px solid var(--color-border);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  box-shadow: 0 2px 4px -1px rgba(45, 74, 62, 0.05);
-}
-
-@media (max-width: 768px) {
-  .hero-title {
-    font-size: 2.5rem;
-  }
-
-  .hero-subtitle {
-    font-size: 1.125rem;
-  }
+*:focus-visible {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
 }

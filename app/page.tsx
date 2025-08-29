@@ -39,7 +39,7 @@ export default function LandingPage() {
           </p>
 
           <div className="flex flex-col sm:flex-row justify-center mb-12 gap-4 mt-12">
-            <Link href="/login">
+            <Link href="/try">
               <Button className="bg-primary hover:bg-accent text-primary-foreground px-8 py-3 text-lg font-semibold rounded-lg">
                 Start today
               </Button>
@@ -86,7 +86,7 @@ export default function LandingPage() {
                 We've built a thoughtful prompt that helps you reflect on your day. These small notes help you see and
                 remember the joys that fill your days.
               </p>
-              <Link href="/login">
+              <Link href="/try">
                 <Button
                   variant="outline"
                   className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
@@ -108,7 +108,7 @@ export default function LandingPage() {
                 Pick a picture that brings a smile or sparks a memory. Add context, share memories and invite others to
                 share in your journey.
               </p>
-              <Link href="/login">
+              <Link href="/try">
                 <Button
                   variant="outline"
                   className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"
@@ -130,7 +130,7 @@ export default function LandingPage() {
                 Not sure what to write? Friendly prompts guide you to recall meaningful stories, making it easy and
                 enjoyable to capture what matters most.
               </p>
-              <Link href="/login">
+              <Link href="/try">
                 <Button
                   variant="outline"
                   className="border-2 border-primary-foreground text-primary-foreground hover:bg-primary-foreground hover:text-primary bg-transparent"

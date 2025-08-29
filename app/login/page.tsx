@@ -1,8 +1,8 @@
 "use client"
 
 import type React from "react"
-import { useState } from "react"
-import { useRouter } from "next/navigation"
+import { useState, useEffect } from "react"
+import { useRouter, useSearchParams } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
@@ -15,7 +15,20 @@ export default function LoginPage() {
   const [isLoading, setIsLoading] = useState(false)
   const [isSignUp, setIsSignUp] = useState(false)
   const [message, setMessage] = useState("")
+  const [trialEntry, setTrialEntry] = useState<any>(null)
   const router = useRouter()
+  const searchParams = useSearchParams()
+
+  useEffect(() => {
+    const isTrialUser = searchParams.get("trial") === "true"
+    if (isTrialUser) {
+      setIsSignUp(true)
+      const storedEntry = localStorage.getItem("trialEntry")
+      if (storedEntry) {
+        setTrialEntry(JSON.parse(storedEntry))
+      }
+    }
+  }, [searchParams])
 
   const handleAuth = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -35,6 +48,29 @@ export default function LoginPage() {
         })
 
         if (error) throw error
+
+        if (trialEntry) {
+          setTimeout(async () => {
+            try {
+              const {
+                data: { user },
+              } = await supabase.auth.getUser()
+              if (user) {
+                await supabase.from("journal_entries").insert({
+                  user_id: user.id,
+                  prompt: trialEntry.prompt,
+                  title: trialEntry.title || null,
+                  content: trialEntry.content,
+                  created_at: trialEntry.timestamp,
+                })
+                localStorage.removeItem("trialEntry")
+              }
+            } catch (saveError) {
+              console.error("Error saving trial entry:", saveError)
+            }
+          }, 2000)
+        }
+
         setMessage("Check your email for a verification link!")
       } else {
         const { data, error } = await supabase.auth.signInWithPassword({
@@ -66,9 +102,26 @@ export default function LoginPage() {
           </div>
           <div>
             <h1 className="text-3xl font-bold text-gray-900">Memory Journal</h1>
-            <p className="text-gray-700 text-lg mt-2">{isSignUp ? "Create your account" : "Welcome back"}</p>
+            <p className="text-gray-700 text-lg mt-2">
+              {trialEntry
+                ? "Save your journal entry by creating an account"
+                : isSignUp
+                  ? "Create your account"
+                  : "Welcome back"}
+            </p>
           </div>
         </div>
+
+        {trialEntry && (
+          <div className="bg-gray-50 p-4 rounded-lg border">
+            <h4 className="font-medium text-gray-900 mb-2">Your journal entry:</h4>
+            {trialEntry.title && <p className="text-sm font-medium text-gray-800">"{trialEntry.title}"</p>}
+            <p className="text-sm text-gray-600 mt-1">
+              {trialEntry.content.slice(0, 100)}
+              {trialEntry.content.length > 100 ? "..." : ""}
+            </p>
+          </div>
+        )}
 
         <form onSubmit={handleAuth} className="space-y-4">
           <div className="space-y-2">
@@ -125,22 +178,30 @@ export default function LoginPage() {
             disabled={isLoading}
             className="w-full bg-teal-700 hover:bg-teal-800 text-white text-lg py-3 font-semibold"
           >
-            {isLoading ? "Loading..." : isSignUp ? "Create Account" : "Sign In"}
+            {isLoading
+              ? "Loading..."
+              : trialEntry
+                ? "Save Entry & Create Account"
+                : isSignUp
+                  ? "Create Account"
+                  : "Sign In"}
           </Button>
         </form>
 
-        <div className="text-center">
-          <button
-            type="button"
-            onClick={() => {
-              setIsSignUp(!isSignUp)
-              setMessage("")
-            }}
-            className="text-teal-700 hover:text-teal-800 font-semibold"
-          >
-            {isSignUp ? "Already have an account? Sign in" : "Don't have an account? Sign up"}
-          </button>
-        </div>
+        {!trialEntry && (
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => {
+                setIsSignUp(!isSignUp)
+                setMessage("")
+              }}
+              className="text-teal-700 hover:text-teal-800 font-semibold"
+            >
+              {isSignUp ? "Already have an account? Sign in" : "Don't have an account? Sign up"}
+            </button>
+          </div>
+        )}
       </Card>
     </div>
   )

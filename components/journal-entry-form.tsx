@@ -118,7 +118,7 @@ export default function JournalEntryForm({ prompt, onBack, onSaved }: JournalEnt
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-4xl mx-auto p-4 sm:p-6">
       {/* Header with back button and prompt display */}
       <div className="mb-8">
         <Button
@@ -141,25 +141,25 @@ export default function JournalEntryForm({ prompt, onBack, onSaved }: JournalEnt
       <div className="relative">
         {/* Paper-like background with lines */}
         <div
-          className="bg-white rounded-lg shadow-lg p-8 border-l-4 border-red-300 relative"
+          className="bg-white rounded-lg shadow-lg p-4 sm:p-8 border-l-4 border-red-300 relative"
           style={{
             backgroundImage: `
               linear-gradient(to right, #e5e7eb 1px, transparent 1px),
               linear-gradient(to bottom, transparent 31px, #e5e7eb 32px, transparent 33px)
             `,
             backgroundSize: "100% 32px, 100% 32px",
-            backgroundPosition: "40px 0, 0 0",
+            backgroundPosition: "20px 0, 0 0",
           }}
         >
           {/* Hole punches */}
-          <div className="absolute left-4 top-8 space-y-8">
+          <div className="absolute left-2 sm:left-4 top-8 space-y-8">
             {[...Array(12)].map((_, i) => (
               <div key={i} className="w-3 h-3 bg-gray-300 rounded-full"></div>
             ))}
           </div>
 
           {/* Title section */}
-          <div className="ml-8 mb-8">
+          <div className="ml-4 sm:ml-8 mb-8">
             <div className="border-2 border-gray-400 rounded-lg p-4 bg-gray-50">
               <label className="block text-sm font-medium text-gray-600 mb-2">Title</label>
               <Input
@@ -173,7 +173,7 @@ export default function JournalEntryForm({ prompt, onBack, onSaved }: JournalEnt
           </div>
 
           {/* Main thoughts section */}
-          <div className="ml-8 mb-8">
+          <div className="ml-4 sm:ml-8 mb-8">
             <div className="border-2 border-gray-400 rounded-lg p-4 bg-gray-50 min-h-[300px]">
               <label className="block text-sm font-medium text-gray-600 mb-2">Your Thoughts</label>
               <Textarea
@@ -187,7 +187,7 @@ export default function JournalEntryForm({ prompt, onBack, onSaved }: JournalEnt
           </div>
 
           {/* Action buttons section */}
-          <div className="ml-8 flex gap-4 mb-8">
+          <div className="ml-4 sm:ml-8 flex flex-col sm:flex-row gap-4 mb-8">
             {/* Record Audio Button */}
             <div className="border-2 border-gray-400 rounded-lg p-4 bg-gray-50 flex-1">
               <Button

@@ -17,7 +17,7 @@ export default function LandingPage() {
       <header className="flex justify-between items-center px-6 py-4 max-w-6xl mx-auto">
         <div className="flex items-center space-x-2">
           <div className="star-icon">
-            <span className="text-white text-xl">✨</span>
+            <span className="text-teal-700 text-xl">✨</span>
           </div>
           <span className="text-xl font-semibold text-primary">Memory journal</span>
         </div>
@@ -155,7 +155,7 @@ export default function LandingPage() {
         <div className="max-w-6xl mx-auto px-6 text-center">
           <div className="flex items-center justify-center space-x-2 mb-4">
             <div className="star-icon">
-              <span className="text-white text-xl">✨</span>
+              <span className="text-teal-700 text-xl">✨</span>
             </div>
             <span className="text-xl font-semibold text-primary">Memory journal</span>
           </div>

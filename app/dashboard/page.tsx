@@ -8,7 +8,6 @@ import JournalEntryForm from "@/components/journal-entry-form"
 import EntryList from "@/components/entry-list"
 import EntryDetail from "@/components/entry-detail"
 import { Card } from "@/components/ui/card"
-import { BookOpen, PlusCircle, LogOut, User, Sparkles } from "lucide-react"
 import { createClient } from "@/lib/supabase/client"
 import type { User as SupabaseUser } from "@supabase/supabase-js"
 
@@ -131,12 +130,12 @@ export default function Dashboard() {
     <div className="min-h-screen" style={{ backgroundColor: "#fef7f0" }}>
       {currentView === "home" && !showSuccessMessage && (
         <div className="hero-section">
-          <div className="max-w-4xl mx-auto">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8">
             <div className="flex items-center justify-center mb-8">
               <div className="star-icon">
-                <Sparkles className="h-6 w-6 text-white" />
+                <span className="text-2xl text-teal-700">✨</span>
               </div>
-              <h1 className="text-2xl font-semibold text-teal-700">Memory journal</h1>
+              <h1 className="text-2xl font-semibold text-teal-700 ml-2">Memory journal</h1>
             </div>
             <h2 className="text-4xl md:text-5xl font-bold text-center mb-6 text-gray-900">
               Every day, a story remembered
@@ -150,10 +149,10 @@ export default function Dashboard() {
         </div>
       )}
 
-      <div className="max-w-4xl mx-auto px-4 py-8">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 md:px-8 py-8">
         <header className="flex justify-between items-center mb-8">
           <div className="flex items-center space-x-2 text-gray-600">
-            <User className="h-5 w-5" />
+            <span className="text-lg">👤</span>
             <span className="text-sm">{user.email}</span>
           </div>
           <Button
@@ -161,7 +160,7 @@ export default function Dashboard() {
             variant="ghost"
             className="text-gray-600 hover:text-gray-900 hover:bg-white/50"
           >
-            <LogOut className="h-4 w-4 mr-2" />
+            <span className="mr-2">🚪</span>
             Sign Out
           </Button>
         </header>
@@ -192,7 +191,7 @@ export default function Dashboard() {
                       onClick={() => setCurrentView("writing")}
                       className="hover:bg-accent flex items-center gap-3 font-semibold text-lg px-8 py-6 h-auto rounded-xl transition-all duration-200 hover:scale-105 bg-emerald-700 text-white"
                     >
-                      <PlusCircle className="h-6 w-6" />
+                      <span className="text-xl">➕</span>
                       <div className="text-left">
                         <div className="font-semibold">Start New Entry</div>
                         <div className="text-sm opacity-90">Write or record your thoughts</div>
@@ -204,7 +203,7 @@ export default function Dashboard() {
                       variant="outline"
                       className="border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground font-semibold text-lg px-8 py-6 h-auto flex items-center gap-3 rounded-xl transition-all duration-200 hover:scale-105 bg-green-100"
                     >
-                      <BookOpen className="h-6 w-6" />
+                      <span className="text-xl">📖</span>
                       <div className="text-left">
                         <div className="font-semibold">Review Entries</div>
                         <div className="text-sm opacity-90">Read your past memories</div>

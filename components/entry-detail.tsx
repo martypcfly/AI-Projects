@@ -139,13 +139,13 @@ export default function EntryDetail({ entry, onBack }: EntryDetailProps) {
                 <div className="flex items-center space-x-3">
                   <Button
                     onClick={isPlaying ? pauseAudio : playAudio}
-                    className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white rounded-full p-3"
+                    className="bg-green-500 hover:bg-green-600 text-white rounded-full p-3"
                   >
                     {isPlaying ? <Pause className="h-5 w-5" /> : <Play className="h-5 w-5" />}
                   </Button>
                   <div className="space-y-1">
                     <p className="text-[var(--color-charcoal)] font-medium">Audio Recording</p>
-                    <p className="text-[var(--color-charcoal)] text-sm">
+                    <p className="text-green-600 text-sm font-medium">
                       Duration: {formatDuration(entry.audio_duration || 0)}
                     </p>
                   </div>

@@ -145,7 +145,7 @@ export default function TryPage() {
                 <Button
                   onClick={handleSave}
                   disabled={!title.trim() && !content.trim()}
-                  className="bg-primary hover:bg-accent text-primary-foreground"
+                  className="bg-green-700 hover:bg-green-800 text-white"
                 >
                   Save Entry
                 </Button>

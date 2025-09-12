@@ -176,7 +176,7 @@ export default function LoginPage() {
           <Button
             type="submit"
             disabled={isLoading}
-            className="w-full bg-teal-700 hover:bg-teal-800 text-white text-lg py-3 font-semibold"
+            className="w-full bg-green-700 hover:bg-green-800 text-white text-lg py-3 font-semibold"
           >
             {isLoading
               ? "Loading..."

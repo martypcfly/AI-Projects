@@ -213,24 +213,26 @@ export default function AudioRecorder({ onAudioSaved, existingAudioUrl, existing
               }}
             />
 
-            <div className="flex items-center justify-between bg-white rounded-lg p-4 border-2 border-[var(--color-border)]">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between bg-white rounded-lg p-4 border-2 border-[var(--color-border)] gap-3">
               <div className="flex items-center space-x-3">
                 <Button
                   onClick={isPlaying ? pauseAudio : playAudio}
                   size="sm"
-                  className="rounded-full bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white border-0"
+                  className="rounded-full bg-green-500 hover:bg-green-600 text-white border-0"
                 >
                   {isPlaying ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />}
                 </Button>
-                <span className="text-[var(--color-text)] font-medium text-black">Audio Recording ({formatTime(duration)})</span>
+                <span className="text-[var(--color-text)] font-medium text-black">
+                  Audio Recording ({formatTime(duration > 0 ? duration : recordingTime)})
+                </span>
               </div>
 
-              <div className="flex items-center space-x-2">
+              <div className="flex items-center justify-end space-x-2">
                 {audioBlob && !existingAudioUrl && (
                   <Button
                     onClick={uploadAudio}
                     disabled={isUploading}
-                    className="bg-[var(--color-primary)] hover:bg-[var(--color-primary-hover)] text-white px-4 py-2 rounded-lg flex items-center gap-2"
+                    className="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg flex items-center gap-2"
                   >
                     {isUploading ? (
                       <>
@@ -250,7 +252,7 @@ export default function AudioRecorder({ onAudioSaved, existingAudioUrl, existing
                   onClick={deleteRecording}
                   variant="outline"
                   size="sm"
-                  className="text-red-600 hover:bg-red-50 bg-transparent"
+                  className="text-red-600 hover:bg-red-50 bg-transparent border-red-200 hover:border-red-300"
                 >
                   <Trash2 className="h-4 w-4" />
                 </Button>

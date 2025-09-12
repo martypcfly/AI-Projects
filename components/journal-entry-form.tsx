@@ -248,7 +248,7 @@ export default function JournalEntryForm({ prompt, onBack, onSaved }: JournalEnt
         <Button
           onClick={handleSave}
           disabled={isSaving || (!content.trim() && !audioUrl && !imageUrl)}
-          className="btn-primary flex items-center gap-2 text-lg px-8 py-4"
+          className="bg-green-700 hover:bg-green-800 text-white flex items-center gap-2 text-lg px-8 py-4 rounded-lg"
         >
           {isSaving ? (
             <>

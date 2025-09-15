@@ -2,6 +2,7 @@ import type React from "react"
 import type { Metadata } from "next"
 import { Inter } from "next/font/google"
 import { Suspense } from "react"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import "./globals.css"
 
 const inter = Inter({
@@ -25,6 +26,7 @@ export default function RootLayout({
     <html lang="en" className={inter.variable}>
       <body className="font-sans antialiased">
         <Suspense fallback={null}>{children}</Suspense>
+        <SpeedInsights />
       </body>
     </html>
   )
